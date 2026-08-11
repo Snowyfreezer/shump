@@ -4,8 +4,10 @@ class_name playerStats
 
 @export_range(1, 10, 1, "or_greater") var lives: int = 3
 @export_range(1, 10, 1, "or_greater") var bombs: int = 3
-
+@export_range(1, 100, 1, "or_greater", "prefer_slider") var bulletDamage: int = 10
+#Bomb or Respawn should trigger invincibility
 @export var invincible: bool = false
+# Like if you get a shield from an ability maybe ie: Reisen Touhou 15
 @export var hitShield: bool = false
 
 

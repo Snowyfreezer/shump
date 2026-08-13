@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://d55tp47n6csx" path="res://Player/player.gd" id="1_4ntmi"]
 [ext_resource type="Texture2D" uid="uid://c0wqyxtccvv7a" path="res://icon.svg" id="1_l8h54"]
+[ext_resource type="Texture2D" uid="uid://b7xr4vljck53q" path="res://Player/FocusCircle.png" id="3_btcbx"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_txwkd"]
 
@@ -14,6 +15,9 @@ script = ExtResource("1_4ntmi")
 texture = ExtResource("1_l8h54")
 
 [node name="focusCircle" type="Sprite2D" parent="." unique_id=459703711]
+visible = false
+scale = Vector2(0.16406246, 0.16406246)
+texture = ExtResource("3_btcbx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=907364711]
 shape = SubResource("CircleShape2D_txwkd")

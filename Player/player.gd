@@ -4,10 +4,15 @@ extends CharacterBody2D
 @export var speed: float = 400.0
 @export var focusSpeed: float = 200.0
 @export var stats: playerStats = preload("res://Player/playerStats.tres")
-# TODO: make focus circle visible when holding shift
+
+@onready var focus_circle: Sprite2D = $focusCircle
 
 func _physics_process(_delta: float) -> void:
-
+# TODO: make focus circle visible when holding shift
+	if Input.is_action_pressed("focus"):
+		focus_circle.show()
+	else:
+		focus_circle.hide()
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var directionX := Input.get_axis("left", "right")

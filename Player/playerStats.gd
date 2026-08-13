@@ -13,16 +13,17 @@ class_name playerStats
 
 signal hitTaken(newlives: int, oldlives: int)
 
-func took_hit() -> void:
+func took_hit() -> bool:
 	var old: int = lives
 	if !invincible:
 		lives -= 1
 		hitTaken.emit(lives, old)
-		return
+		return true
 	if hitShield && !invincible:
 		hitTaken.emit(lives)
 		hitShield = false
-		return
+		return true
+	return false
  
 func add_life(amount: int = 1) -> void:
 	lives += amount

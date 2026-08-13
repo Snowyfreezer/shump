@@ -3,7 +3,7 @@ extends CharacterBody2D
 
 @export var speed: float = 400.0
 @export var focusSpeed: float = 200.0
-
+@export var stats: playerStats = preload("res://Player/playerStats.tres")
 # TODO: make focus circle visible when holding shift
 
 func _physics_process(_delta: float) -> void:

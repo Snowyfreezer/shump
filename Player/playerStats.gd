@@ -13,15 +13,18 @@ class_name playerStats
 
 signal hitTaken(newlives: int, oldlives: int)
 
+# TODO add a sound for when you get hit
 func took_hit() -> bool:
 	var old: int = lives
 	if !invincible:
 		lives -= 1
 		hitTaken.emit(lives, old)
+		print("Player got hit, PICHUNNNNN")
 		return true
 	if hitShield && !invincible:
 		hitTaken.emit(lives)
 		hitShield = false
+		print("Player got hit, but they had a shield")
 		return true
 	return false
  

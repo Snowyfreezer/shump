@@ -8,35 +8,41 @@ extends CharacterBody2D
 @onready var focus_circle: Sprite2D = $focusCircle
 
 func _physics_process(_delta: float) -> void:
-# TODO: make focus circle visible when holding shift
+# make focus circle visible when holding shift
 	if Input.is_action_pressed("focus"):
 		focus_circle.show()
 	else:
 		focus_circle.hide()
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
-	var directionX := Input.get_axis("left", "right")
-	if directionX:
-		if Input.is_action_pressed("focus"):
-			velocity.x = directionX * focusSpeed
-		else:
-			velocity.x = directionX * speed
-	else:
-		if Input.is_action_pressed("focus"):
-			velocity.x = move_toward(velocity.x, 0, focusSpeed)
-		else:
-			velocity.x = move_toward(velocity.x, 0, speed)
+	# var directionX := Input.get_axis("left", "right")
+	# if directionX:
+	# 	if Input.is_action_pressed("focus"):
+	# 		velocity.x = directionX * focusSpeed
+	# 	else:
+	# 		velocity.x = directionX * speed
+	# else:
+	# 	if Input.is_action_pressed("focus"):
+	# 		velocity.x = move_toward(velocity.x, 0, focusSpeed)
+	# 	else:
+	# 		velocity.x = move_toward(velocity.x, 0, speed)
 
-	var directionY := Input.get_axis("up", "down")
-	if directionY:
-		if Input.is_action_pressed("focus"):
-			velocity.y = directionY * focusSpeed
-		else:			
-			velocity.y = directionY * speed
+	# var directionY := Input.get_axis("up", "down")
+	# if directionY:
+	# 	if Input.is_action_pressed("focus"):
+	# 		velocity.y = directionY * focusSpeed
+	# 	else:			
+	# 		velocity.y = directionY * speed
+	# else:
+	# 	if Input.is_action_pressed("focus"):
+	# 		velocity.y = move_toward(velocity.y, 0, focusSpeed)
+	# 	else:
+	# 		velocity.y = move_toward(velocity.y, 0, speed)
+
+	var input_direction := Input.get_vector("left", "right", "up", "down")
+	if Input.is_action_pressed("focus"):
+		velocity = input_direction * focusSpeed
 	else:
-		if Input.is_action_pressed("focus"):
-			velocity.y = move_toward(velocity.y, 0, focusSpeed)
-		else:
-			velocity.y = move_toward(velocity.y, 0, speed)
+		velocity = input_direction * speed
 
 	move_and_slide()
